@@ -117,6 +117,82 @@ yarn workspace backend start --config ../../app-config.yaml --config ../../app-c
 - `yarn build:backend` — build the backend for deployment
 - `yarn new` — scaffold a new plugin/module under `plugins/`
 
+## Installed plugins
+
+### Backend (`packages/backend`)
+
+| Plugin | Purpose |
+| --- | --- |
+| `@backstage/plugin-app-backend` | Serves the built frontend app from the backend. |
+| `@backstage/plugin-proxy-backend` | Proxies frontend requests to external services. |
+| `@backstage/plugin-scaffolder-backend` | Runs Software Templates and scaffolder actions — this is where the Terragrunt/Terraform provisioning logic will plug in. |
+| `@backstage/plugin-scaffolder-backend-module-github` | Adds the `publish:github` scaffolder action (push generated content to a GitHub repo). |
+| `@backstage/plugin-scaffolder-backend-module-notifications` | Adds the `notification:send` scaffolder action. |
+| `@backstage/plugin-techdocs-backend` | Generates/serves TechDocs documentation sites. |
+| `@backstage/plugin-auth-backend` + `-module-guest-provider` | Authentication; currently only the guest provider is enabled. |
+| `@backstage/plugin-catalog-backend` | The Software Catalog: ingests and stores entities (Components, APIs, Templates, etc.). |
+| `@backstage/plugin-catalog-backend-module-scaffolder-entity-model` | Teaches the catalog how to process `Template` entities. |
+| `@backstage/plugin-catalog-backend-module-logs` | Logs catalog processing errors. |
+| `@backstage/plugin-permission-backend` + `-module-allow-all-policy` | Permission framework; currently set to allow everything. |
+| `@backstage/plugin-search-backend` + `-module-pg` | Search indexing, backed by a Postgres full-text search engine. |
+| `@backstage/plugin-search-backend-module-catalog` / `-techdocs` | Feed catalog entities and TechDocs content into the search index. |
+| `@backstage/plugin-kubernetes-backend` | Surfaces Kubernetes resources for cataloged components. |
+| `@backstage/plugin-user-settings-backend` | Stores per-user settings (e.g. theme, pinned items). |
+| `@backstage/plugin-notifications-backend` + `@backstage/plugin-signals-backend` | In-app notifications and the realtime signal channel that delivers them. |
+| `@backstage/plugin-mcp-actions-backend` | Exposes catalog/scaffolder/auth actions as MCP tools for AI clients. |
+
+### Frontend (`packages/app`)
+
+| Plugin | Purpose |
+| --- | --- |
+| `@backstage/plugin-catalog` + `-graph` + `-import` | Catalog browsing UI, entity relationship graph, and "register existing component" flow. |
+| `@backstage/plugin-scaffolder` | The "Create..." UI that lists and runs Software Templates. |
+| `@backstage/plugin-techdocs` (+ `-module-addons-contrib`) | Documentation viewer UI. |
+| `@backstage/plugin-search` | Search UI. |
+| `@backstage/plugin-auth` | Sign-in page/provider UI. |
+| `@backstage/plugin-kubernetes` | Kubernetes resources tab on entity pages. |
+| `@backstage/plugin-notifications` + `@backstage/plugin-signals` | Notification inbox UI. |
+| `@backstage/plugin-user-settings` + `@backstage/plugin-app-module-user-settings` | User profile/settings page. |
+| `@backstage/plugin-org` | Organization (Users/Groups) browsing. |
+| `@backstage/plugin-api-docs` | API entity documentation viewer (OpenAPI/AsyncAPI/etc.). |
+| `@backstage/plugin-home` (+ `-react`) | The homepage and its configurable widgets (see `app-config.yaml`). |
+| `@backstage/plugin-app-visualizer` | Debug view of the app's frontend extension tree. |
+
+## Adding a new plugin or module
+
+New plugins/modules are scaffolded with the root script:
+
+```sh
+yarn new
+```
+
+This walks you through an interactive picker. The important choices:
+
+- **"Select the thing you want to be creating"** — pick `backend-module` to extend an existing
+  backend plugin (most common case here — e.g. a new scaffolder action), `frontend-plugin` for a
+  new UI plugin, or `backend-plugin`/`frontend-module` for the less common cases.
+- **"Enter the package name of the plugin this module extends"** (only for `*-module` types) —
+  the plugin whose extension points you're hooking into. For a new Terragrunt scaffolder action,
+  enter `@backstage/plugin-scaffolder-backend` (the same extension point
+  `@backstage/plugin-scaffolder-backend-module-github` already uses in this repo). See the
+  installed-plugins tables above for other extension points.
+
+After scaffolding:
+
+1. The new package appears under `plugins/<name>/`.
+2. Register it in the relevant place:
+   - Backend modules/plugins → add a `backend.add(import('...'))` line in
+     [`packages/backend/src/index.ts`](packages/backend/src/index.ts), next to the plugin it extends.
+   - Frontend plugins/modules → wire into [`packages/app/src/App.tsx`](packages/app/src/App.tsx)
+     per the plugin's own docs.
+3. Run `yarn install` (adds the new workspace to the lockfile) and `yarn lint`/`yarn tsc` to verify.
+
+> Note: if `yarn new` fails with an error like `Your application tried to access
+> @backstage/cli-module-new, but it isn't declared in your dependencies`, it's because this repo
+> uses Yarn PnP (no `.yarnrc.yml` overriding the default), which forbids requiring undeclared
+> transitive dependencies. Add `@backstage/cli-module-new` to the root `devDependencies` in
+> [`package.json`](./package.json) and re-run `yarn install`.
+
 ## Related repositories
 
 - [`hello-terragrunt-live`](https://github.com/hoangviet1vu/hello-terragrunt-live) — holds the

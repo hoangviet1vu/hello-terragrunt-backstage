@@ -27294,6 +27294,7 @@ __metadata:
   dependencies:
     "@backstage/cli": "npm:^0.36.5"
     "@backstage/cli-defaults": "npm:^0.1.5"
+    "@backstage/cli-module-new": "npm:^0.1.6"
     "@backstage/e2e-test-utils": "npm:^0.1.2"
     "@jest/environment-jsdom-abstract": "npm:~30.2.0"
     "@playwright/test": "npm:^1.32.3"
