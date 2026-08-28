@@ -57,7 +57,7 @@ Tenant --> Backstage UI --> Software Template --> Scaffolder action(s)
 ├── app-config.yaml              # Base Backstage config (local dev defaults, SQLite)
 ├── app-config.production.yaml   # Production overrides (Postgres, prod backend/base URLs)
 ├── catalog-info.yaml            # This app's own catalog entity
-├── examples/                    # Example catalog entities, org data, and a starter template
+├── templates/                   # Example catalog entities, org data, and a starter template
 ├── packages/
 │   ├── app/                     # Frontend (Backstage app)
 │   └── backend/                 # Backend (plugins wired up in src/index.ts)
@@ -81,13 +81,18 @@ Tenant --> Backstage UI --> Software Template --> Scaffolder action(s)
 | Variable                          | Purpose                                              | Used in                       |
 | ---------------------------------- | ----------------------------------------------------- | ------------------------------ |
 | `GITHUB_TOKEN`                    | PAT for reading/writing `hello-terragrunt-live` and other GitHub integrations | `app-config.yaml` |
+| `GITHUB_CLIENT_ID`                | Identifies the GitHub OAuth App used for GitHub sign-in | `app-config.yaml`, `app-config.production.yaml` |
+| `GITHUB_CLIENT_SECRET`            | Authenticates the GitHub OAuth App used for GitHub sign-in | `app-config.yaml`, `app-config.production.yaml` |
 | `POSTGRES_HOST` / `POSTGRES_PORT` | Production database connection                        | `app-config.production.yaml` |
 | `POSTGRES_USER` / `POSTGRES_PASSWORD` | Production database credentials                    | `app-config.production.yaml` |
 | `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` (or role-based credentials) | AWS credentials used by the AWS SDK and by Terraform/Terragrunt when applying infra | Terragrunt/Terraform steps |
 | `AWS_REGION` / `AWS_DEFAULT_REGION` | Default AWS region for provisioning                  | Terragrunt/Terraform steps    |
 
-Never commit real values for these — use a local `.env` (already gitignored) or your
-deployment platform's secret manager.
+`GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` are both obtained from a GitHub OAuth App
+(GitHub → Settings → Developer settings → OAuth Apps).
+
+Never commit real values for these — including `GITHUB_CLIENT_SECRET` — use a local `.env`
+(already gitignored) or your deployment platform's secret manager.
 
 ## Quick start
 
@@ -100,7 +105,7 @@ yarn start
 
 This starts the frontend and backend together (frontend on `http://localhost:3000`, backend on
 `http://localhost:7007`), using the local SQLite database and the example catalog data/template
-under [`examples/`](./examples).
+under [`templates/`](./templates).
 
 To run against production config (Postgres, etc.) locally, supply the required environment
 variables and pass the extra config file:

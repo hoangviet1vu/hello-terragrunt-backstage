@@ -29,8 +29,13 @@ backend:
       #     $file: <file-path>/ca/server.crt
 
 auth:
+  environment: production
   providers:
     guest: {}
+    github:
+      production:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
 
 catalog:
   # Overrides the default list locations from app-config.yaml as these contain example data.
@@ -40,16 +45,16 @@ catalog:
     # Local example data, replace this with your production config, these are intended for demo use only.
     # File locations are relative to the backend process, typically in a deployed context, such as in a Docker container, this will be the root
     - type: file
-      target: ./examples/entities.yaml
+      target: ./templates/entities.yaml
 
     # Local example template
     - type: file
-      target: ./examples/template/template.yaml
+      target: ./templates/template/template.yaml
       rules:
         - allow: [Template]
 
     # Local example organizational data
     - type: file
-      target: ./examples/org.yaml
+      target: ./templates/org.yaml
       rules:
         - allow: [User, Group]

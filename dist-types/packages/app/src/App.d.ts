@@ -1,4 +1,4 @@
 declare const _default: {
-    createRoot(): import("react").JSX.Element;
+    createRoot(): JSX.Element;
 };
 export default _default;
