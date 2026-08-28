@@ -1,0 +1,93 @@
+{
+  "pbtResults": {
+    "1. Reproduce the bug and confirm the missing-artifact root cause (exploration, BEFORE the fix)": {
+      "status": "passed",
+      "failingExample": "Bug reproduced on the unfixed install state — this failure CONFIRMS the bug (PBT exploration success case).\n\nArtifact gap (Bug Condition: resolverBackingArtifactMissing):\n- ABSENT: .yarn/cache/ and .yarn/__virtual__/\n- PRESENT: .pnp.cjs, .pnp.loader.mjs, yarn.lock, .yarn/install-state.gz (plus .yarn/unplugged/)\n- Note: enableGlobalCache=true; global cache /home/vvu/.yarn/berry/cache is populated (6617 zips), but the per-project .yarn/__virtual__/ materialization tree is missing, so PnP-referenced virtual paths (.yarn/__virtual__/.../.yarn/berry/cache/*.zip) do not exist on disk.\n\nFrontend Rspack build (yarn workspace app start) result: \"Rspack compiled with 26 errors\" (13 main-compilation errors + 13 child-compilation errors = 26). All are \"Module not found: Can't resolve\" errors whose paths reference .yarn/__virtual__/... and berry cache zips.\n\nFailing specifiers (counterexamples):\n- CLI virtual entrypoints: __backstage-autodetected-plugins__ (x1), __backstage-module-federation-runtime-shared-dependencies__ (x1)\n- @backstage/plugin-app virtual-package deps (under .yarn/__virtual__/@backstage-plugin-app-virtual-c3a73fbb1c/...): @backstage/config (x3), @backstage/core-app-api (x1), i18next (x2), prop-types (x1), lodash/mapValues (x1), use-sync-external-store/shim (x1)\n- material-ui-popup-state transitives (under .yarn/__virtual__/material-ui-popup-state-virtual-f19a05a4c0/...): @mui/material/Popover (x1), @mui/material/version (x1)\n\nRoot cause CONFIRMED: missing .yarn/cache/ (project-local) + missing .yarn/__virtual__/ tree — resolverBackingArtifactMissing. Primary hypothesis (incomplete/partial PnP install state) holds; not refuted.\n\nNote: `yarn workspace app build` (production/rollup path) fails even earlier with a related PnP peer-dependency error (rollup-plugin-esbuild cannot access esbuild peer via the missing __virtual__ chain), also tracing to .yarn/__virtual__/.../.yarn/berry/cache/*.zip — same missing-artifact root cause, surfaced before the Rspack compile pass. The 26-error symptom is produced by the Rspack `start`/dev path as described in the spec.",
+      "lastRunTimestamp": 1787892958526
+    }
+  },
+  "executionHistory": {
+    "1. Reproduce the bug and confirm the missing-artifact root cause (exploration, BEFORE the fix)": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892730958
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892741648
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892994283
+      }
+    ],
+    "2. Capture the preservation baseline on the UNFIXED state (BEFORE the fix)": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892731012
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892999950
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787893077086
+      }
+    ],
+    "3.1 Run a clean, complete `yarn install` to regenerate the PnP install state": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892731069
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787893081864
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787893268309
+      }
+    ],
+    "3.2 Verify the bug reproduction from task 1 now resolves cleanly": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892731119
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787893273856
+      },
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787894663881
+      }
+    ],
+    "3.3 Verify the preservation baseline from task 2 is unchanged": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892731144
+      }
+    ],
+    "4. Checkpoint - Ensure the build is clean and nothing regressed": [
+      {
+        "executionId": "a8220c3c-775e-4d81-a1c9-8c2c3c9d3eaa",
+        "chatSessionId": "sess_020b1c3b-b557-4ce0-8f11-3c050d99af2a",
+        "timestamp": 1787892731193
+      }
+    ]
+  }
+}
