@@ -19,7 +19,7 @@ shell out to Git/Terragrunt/Terraform/AWS**, wrapped in an otherwise-standard Ba
 As of now this is a freshly scaffolded app (`npx @backstage/create-app@latest`) with **no
 custom Terragrunt integration implemented yet** — `packages/backend/src/index.ts` only wires up
 stock Backstage plugins (scaffolder, catalog, auth, techdocs, permission, search, kubernetes,
-notifications, mcp-actions), and `examples/template/template.yaml` is the default example
+notifications, mcp-actions), and `templates/template/template.yaml` is the default example
 template (fetch → publish:github → catalog:register). Treat any Terragrunt/Terraform-specific
 behavior described in the README as the target design, not yet-existing code, unless you find it
 in `plugins/`.
@@ -30,7 +30,7 @@ in `plugins/`.
 - `packages/backend` — backend; plugins are registered in `src/index.ts` via `backend.add(...)`.
 - `plugins/` — where custom plugins/modules should live (e.g. a scaffolder action module for
   Terragrunt). Scaffold new ones with `yarn new` from the repo root, not by hand.
-- `examples/` — demo catalog entities, org data, and the starter template. This is what
+- `templates/` — demo catalog entities, org data, and the starter template. This is what
   `app-config.yaml` points `catalog.locations` at for local dev; production config
   (`app-config.production.yaml`) should point at real catalog/template locations instead.
 - `app-config.yaml` — base/local config (SQLite, guest auth, example locations).
@@ -47,7 +47,7 @@ in `plugins/`.
 - Add new scaffolder actions as a custom module in `plugins/`, then register it in the backend
   (typically alongside the existing `@backstage/plugin-scaffolder-backend-module-github` line).
 - Add new Software Templates as `Template` catalog entities (see
-  `examples/template/template.yaml` for the shape) and register their location under
+  `templates/template/template.yaml` for the shape) and register their location under
   `catalog.locations` in the relevant `app-config*.yaml`.
 - Follow the Backstage config convention: secrets and environment-specific values are
   `${ENV_VAR}` references in `app-config*.yaml`, never hardcoded.
