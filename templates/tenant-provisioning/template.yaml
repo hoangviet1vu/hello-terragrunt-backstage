@@ -1,0 +1,78 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+kind: Template
+metadata:
+  name: tenant-provisioning-template
+  title: Tenant Provisioning
+  description: >-
+    Tenant-provisioning template: collects the inputs needed to provision or
+    update a tenant's Terragrunt configuration (tenant name, environment, and
+    optional components).
+spec:
+  owner: user:guest
+  type: service
+
+  # The input form: collects the values a future provisioning action will map
+  # to the Terragrunt inputs block (tenant_name, environment, enable_dynamodb,
+  # enable_ecr).
+  parameters:
+    - title: Tenant provisioning inputs
+      required:
+        - tenantName
+        - environment
+      properties:
+        tenantName:
+          title: Tenant name
+          type: string
+          description: >-
+            Identifier for the tenant (e.g. sampletenant). Used as the tenant's
+            top-level folder name and written to the tenant_name Terragrunt
+            input. Must be 1-32 characters of lowercase letters, digits, and
+            hyphens.
+          pattern: '^[a-z0-9-]{1,32}$'
+          ui:autofocus: true
+        environment:
+          title: Environment
+          type: string
+          description: >-
+            Deployment environment for this tenant configuration. Used as the
+            subfolder name and written to the environment Terragrunt input.
+            Must be 1-12 characters of lowercase letters, digits, and hyphens.
+          pattern: '^[a-z0-9-]{1,12}$'
+          default: dev
+        dynamodb:
+          title: Enable DynamoDB
+          type: boolean
+          description: Provision the DynamoDB component for this tenant/environment.
+          default: false
+        ecr:
+          title: Enable ECR
+          type: boolean
+          description: Provision the ECR (container registry) component for this tenant/environment.
+          default: false
+
+  # Placeholder for the future tenant-provisioning scaffolder action.
+  # For now this template only collects and echoes input; it does NOT render
+  # terragrunt.hcl, clone/update the tenant live repo, or open a PR — no
+  # Git/Terragrunt/Terraform/AWS side effects.
+  steps:
+    - id: show-inputs
+      name: Show collected inputs
+      action: debug:log
+      input:
+        message: >-
+          Tenant provisioning inputs collected -
+          tenant: ${{ parameters.tenantName }},
+          environment: ${{ parameters.environment }},
+          dynamodb: ${{ parameters.dynamodb }},
+          ecr: ${{ parameters.ecr }}
+
+  # Render the collected values on the results screen.
+  output:
+    text:
+      - title: Collected inputs
+        content: |
+          - **Tenant name:** ${{ parameters.tenantName }}
+          - **Environment:** ${{ parameters.environment }}
+          - **Enable DynamoDB:** ${{ parameters.dynamodb }}
+          - **Enable ECR:** ${{ parameters.ecr }}

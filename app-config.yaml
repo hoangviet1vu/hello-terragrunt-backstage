@@ -208,6 +208,12 @@ catalog:
       rules:
         - allow: [Template]
 
+    # Tenant provisioning template
+    - type: file
+      target: ../../templates/tenant-provisioning/template.yaml
+      rules:
+        - allow: [Template]
+
     # Local example organizational data
     - type: file
       target: ../../templates/org.yaml
