@@ -63,9 +63,9 @@ function extractTenantNameSchema(): Record<string, unknown> {
 
 /**
  * Reference oracle: a tenant name is valid iff its length is in [1, 32] and
- * every character is in the allowed alphabet [a-z0-9-].
+ * every character is in the allowed alphabet [A-Za-z0-9-].
  */
-const ALLOWED_CHAR = /^[a-z0-9-]$/;
+const ALLOWED_CHAR = /^[A-Za-z0-9-]$/;
 function isValidTenantName(s: string): boolean {
   if (s.length < 1 || s.length > 32) {
     return false;
@@ -78,19 +78,21 @@ describe('tenant-provisioning template: tenantName parameter schema', () => {
   const ajv = new Ajv({ allErrors: true });
   const validate = ajv.compile(tenantNameSchema);
 
-  it('extracts a string schema with the committed 1-32 [a-z0-9-] pattern', () => {
+  it('extracts a string schema with the committed 1-32 [A-Za-z0-9-] pattern', () => {
     // Guard: confirms the property test is exercising the real constraint.
     expect(tenantNameSchema.type).toBe('string');
-    expect(tenantNameSchema.pattern).toBe('^[a-z0-9-]{1,32}$');
+    expect(tenantNameSchema.pattern).toBe('^[A-Za-z0-9-]{1,32}$');
   });
 
   // Feature: tenant-provisioning-template, Property 1: Tenant name schema
   // accepts exactly the valid names — for all strings s, validation succeeds
-  // iff s has length in [1,32] and every character of s is in [a-z0-9-].
+  // iff s has length in [1,32] and every character of s is in [A-Za-z0-9-].
   // Validates: Requirements 2.3, 2.4, 2.5, 2.6, 2.7
-  it('accepts a value iff length in [1,32] and all chars in [a-z0-9-] (Property 1)', () => {
+  it('accepts a value iff length in [1,32] and all chars in [A-Za-z0-9-] (Property 1)', () => {
     const allowedAlphabet = fc.constantFrom(
-      ...'abcdefghijklmnopqrstuvwxyz0123456789-'.split(''),
+      ...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-'.split(
+        '',
+      ),
     );
 
     const candidate = fc.oneof(
@@ -113,7 +115,7 @@ describe('tenant-provisioning template: tenantName parameter schema', () => {
           fc
             .array(allowedAlphabet, { minLength: 0, maxLength: 20 })
             .map(chars => chars.join('')),
-          fc.constantFrom('A', 'Z', '_', '.', '/', ' ', 'é', '好'),
+          fc.constantFrom('_', '.', '/', ' ', 'é', '好'),
           fc
             .array(allowedAlphabet, { minLength: 0, maxLength: 20 })
             .map(chars => chars.join('')),

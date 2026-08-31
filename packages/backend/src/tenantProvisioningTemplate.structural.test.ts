@@ -119,9 +119,9 @@ describe('tenant-provisioning template: structural / schema validation', () => {
   describe('tenantName parameter (Req 2.1, 2.2, 2.4)', () => {
     const tenantName = properties.tenantName ?? {};
 
-    it('is a required string with the committed 1-32 [a-z0-9-] pattern', () => {
+    it('is a required string with the committed 1-32 [A-Za-z0-9-] pattern', () => {
       expect(tenantName.type).toBe('string');
-      expect(tenantName.pattern).toBe('^[a-z0-9-]{1,32}$');
+      expect(tenantName.pattern).toBe('^[A-Za-z0-9-]{1,32}$');
       expect(requiredList).toContain('tenantName');
     });
 

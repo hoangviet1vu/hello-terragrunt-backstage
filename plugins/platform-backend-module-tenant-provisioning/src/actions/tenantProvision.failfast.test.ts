@@ -5,7 +5,7 @@
  *
  * Property 4 targets the action handler's own fail-fast guard: for any input
  * where the tenant name is absent, empty, blank, or violates
- * `^[a-z0-9-]{1,32}$`, or the environment is not exactly one of `dev`, `test`,
+ * `^[A-Za-z0-9-]{1,32}$`, or the environment is not exactly one of `dev`, `test`,
  * `uat`, `prod`, the handler MUST fail with a validation error identifying the
  * offending input and MUST perform no side effect — no working directory is
  * created, no clone is attempted, and no branch/commit/pull request is created.
@@ -92,14 +92,14 @@ function expectNoSideEffects() {
 }
 
 const VALID_ENVIRONMENTS = ['dev', 'test', 'uat', 'prod'];
-const VALID_TENANT_RE = /^[a-z0-9-]{1,32}$/;
+const VALID_TENANT_RE = /^[A-Za-z0-9-]{1,32}$/;
 
 /**
- * Arbitrary tenant-name value that is INVALID against `^[a-z0-9-]{1,32}$`.
+ * Arbitrary tenant-name value that is INVALID against `^[A-Za-z0-9-]{1,32}$`.
  * Covers: absent (undefined), null, empty string, blank/whitespace, too long
- * (>32), and arbitrary strings containing out-of-range characters (uppercase,
- * symbols, spaces, unicode). Any value that happens to be valid is filtered
- * out, so every generated case is genuinely invalid.
+ * (>32), and arbitrary strings containing out-of-range characters (symbols,
+ * spaces, unicode — uppercase letters are now valid). Any value that happens
+ * to be valid is filtered out, so every generated case is genuinely invalid.
  */
 const invalidTenantNameArb = fc.oneof(
   fc.constant(undefined),

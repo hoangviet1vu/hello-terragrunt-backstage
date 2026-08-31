@@ -41,7 +41,7 @@ export interface CreateTenantProvisionActionOptions {
 }
 
 /** Tenant name pattern shared by the input schema and the fail-fast guard. */
-const TENANT_NAME_PATTERN = /^[a-z0-9-]{1,32}$/;
+const TENANT_NAME_PATTERN = /^[A-Za-z0-9-]{1,32}$/;
 
 /** The fixed set of valid environments. */
 const ENVIRONMENTS = ['dev', 'test', 'uat', 'prod'] as const;
@@ -77,9 +77,9 @@ export function createTenantProvisionAction(
             .string()
             .regex(
               TENANT_NAME_PATTERN,
-              'tenantName must match ^[a-z0-9-]{1,32}$',
+              'tenantName must match ^[A-Za-z0-9-]{1,32}$',
             )
-            .describe('Tenant identifier; must match ^[a-z0-9-]{1,32}$'),
+            .describe('Tenant identifier; must match ^[A-Za-z0-9-]{1,32}$'),
         environment: z =>
           z
             .enum(ENVIRONMENTS)
@@ -111,7 +111,7 @@ export function createTenantProvisionAction(
         !TENANT_NAME_PATTERN.test(tenantName)
       ) {
         throw new Error(
-          `Invalid input 'tenantName': must match ^[a-z0-9-]{1,32}$`,
+          `Invalid input 'tenantName': must match ^[A-Za-z0-9-]{1,32}$`,
         );
       }
       if (!ENVIRONMENTS.includes(environment)) {

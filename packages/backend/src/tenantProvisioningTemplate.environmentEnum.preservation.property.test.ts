@@ -162,10 +162,10 @@ describe('tenant-provisioning template: preservation (baseline behavior to keep)
 
   // Requirement 3.3: tenantName is validated/collected unchanged. tenantName is
   // out of scope for the fix, so its acceptance must be identical throughout.
-  it('preserves tenantName validation over its pattern ^[a-z0-9-]{1,32}$ (Req 3.3)', () => {
+  it('preserves tenantName validation over its pattern ^[A-Za-z0-9-]{1,32}$ (Req 3.3)', () => {
     // The tenantName schema itself must be unchanged (pattern-based, string).
     expect(tenantNameSchema.type).toBe('string');
-    expect(tenantNameSchema.pattern).toBe('^[a-z0-9-]{1,32}$');
+    expect(tenantNameSchema.pattern).toBe('^[A-Za-z0-9-]{1,32}$');
 
     const tenantNameValue = fc
       .array(

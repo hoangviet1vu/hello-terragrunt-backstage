@@ -27,9 +27,9 @@ spec:
           description: >-
             Identifier for the tenant (e.g. sampletenant). Used as the tenant's
             top-level folder name and written to the tenant_name Terragrunt
-            input. Must be 1-32 characters of lowercase letters, digits, and
+            input. Must be 1-32 characters of letters, digits, and
             hyphens.
-          pattern: '^[a-z0-9-]{1,32}$'
+          pattern: '^[A-Za-z0-9-]{1,32}$'
           ui:autofocus: true
         environment:
           title: Environment
