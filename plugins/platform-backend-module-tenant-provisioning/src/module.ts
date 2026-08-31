@@ -2,15 +2,22 @@ import {
   coreServices,
   createBackendModule,
 } from '@backstage/backend-plugin-api';
+import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node';
+
+import { createTenantProvisionAction } from './actions/tenantProvision';
 
 export const platformModuleTenantProvisioning = createBackendModule({
   pluginId: 'platform',
   moduleId: 'tenant-provisioning',
   register(reg) {
     reg.registerInit({
-      deps: { logger: coreServices.logger },
-      async init({ logger }) {
-        logger.info('Hello World!');
+      deps: {
+        scaffolder: scaffolderActionsExtensionPoint,
+        config: coreServices.rootConfig,
+        logger: coreServices.logger,
+      },
+      async init({ scaffolder, config, logger }) {
+        scaffolder.addActions(createTenantProvisionAction({ config, logger }));
       },
     });
   },

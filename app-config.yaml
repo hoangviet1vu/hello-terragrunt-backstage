@@ -191,6 +191,14 @@ auth:
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
+# Configuration for the `tenant:provision` scaffolder action.
+# Values are ${ENV_VAR} references per the Backstage config convention; never hardcode secrets or env-specific values.
+tenantProvisioning:
+  liveRepoUrl: ${TENANT_LIVE_REPO_URL}
+  liveRepoBranch: ${TENANT_LIVE_REPO_BRANCH} # optional; defaults to main
+  moduleSource: ${TERRAGRUNT_MODULE_SOURCE} # required
+  components: [dynamodb, ecr] # Allowed_Components; defaults to [dynamodb, ecr]
+
 catalog:
   import:
     entityFilename: catalog-info.yaml

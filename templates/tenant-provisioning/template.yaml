@@ -12,9 +12,9 @@ spec:
   owner: user:guest
   type: service
 
-  # The input form: collects the values a future provisioning action will map
-  # to the Terragrunt inputs block (tenant_name, environment, enable_dynamodb,
-  # enable_ecr).
+  # The input form: collects the values the tenant:provision action maps to the
+  # Terragrunt inputs block (tenant_name, environment, and one enable_<component>
+  # per selected component).
   parameters:
     - title: Tenant provisioning inputs
       required:
@@ -44,39 +44,42 @@ spec:
             - uat
             - prod
           default: dev
-        dynamodb:
-          title: Enable DynamoDB
-          type: boolean
-          description: Provision the DynamoDB component for this tenant/environment.
-          default: false
-        ecr:
-          title: Enable ECR
-          type: boolean
-          description: Provision the ECR (container registry) component for this tenant/environment.
-          default: false
+        components:
+          title: Components
+          description: Optional components to enable for this tenant/environment.
+          type: array
+          items:
+            type: string
+            enum:
+              - dynamodb
+              - ecr
+          uniqueItems: true
+          default: []
+          ui:widget: checkboxes
 
-  # Placeholder for the future tenant-provisioning scaffolder action.
-  # For now this template only collects and echoes input; it does NOT render
-  # terragrunt.hcl, clone/update the tenant live repo, or open a PR — no
-  # Git/Terragrunt/Terraform/AWS side effects.
+  # Invoke the tenant:provision scaffolder action, which renders/updates the
+  # tenant's terragrunt.hcl in the live repo on a new branch and opens a pull
+  # request. The workflow ends at the pull request — no terragrunt plan/apply
+  # or Terraform/AWS side effects.
   steps:
-    - id: show-inputs
-      name: Show collected inputs
-      action: debug:log
+    - id: provision
+      name: Provision tenant Terragrunt config
+      action: tenant:provision
       input:
-        message: >-
-          Tenant provisioning inputs collected -
-          tenant: ${{ parameters.tenantName }},
-          environment: ${{ parameters.environment }},
-          dynamodb: ${{ parameters.dynamodb }},
-          ecr: ${{ parameters.ecr }}
+        tenantName: ${{ parameters.tenantName }}
+        environment: ${{ parameters.environment }}
+        selectedComponents: ${{ parameters.components }}
 
-  # Render the collected values on the results screen.
+  # Render the branch name and pull request URL on the results screen.
   output:
+    links:
+      - title: Open pull request
+        url: ${{ steps.provision.output.pullRequestUrl }}
     text:
-      - title: Collected inputs
+      - title: Provisioning result
         content: |
           - **Tenant name:** ${{ parameters.tenantName }}
           - **Environment:** ${{ parameters.environment }}
-          - **Enable DynamoDB:** ${{ parameters.dynamodb }}
-          - **Enable ECR:** ${{ parameters.ecr }}
+          - **Components:** ${{ parameters.components }}
+          - **Branch:** ${{ steps.provision.output.branchName }}
+          - **Pull request:** ${{ steps.provision.output.pullRequestUrl }}

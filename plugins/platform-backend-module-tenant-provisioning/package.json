@@ -16,6 +16,7 @@
     "pluginId": "platform",
     "pluginPackage": "@backstage/plugin-catalog-backend"
   },
+  "configSchema": "config.d.ts",
   "scripts": {
     "start": "backstage-cli package start",
     "build": "backstage-cli package build",
@@ -26,12 +27,19 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-plugin-api": "^1.10.0"
+    "@backstage/backend-plugin-api": "^1.10.0",
+    "@backstage/integration": "^2.1.1",
+    "@backstage/plugin-scaffolder-node": "^0.13.6",
+    "@octokit/rest": "^22.0.1",
+    "isomorphic-git": "^1.41.9",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@backstage/backend-test-utils": "^1.11.6",
     "@backstage/cli": "^0.36.5",
-    "@backstage/plugin-catalog-backend": "^3.9.0"
+    "@backstage/plugin-catalog-backend": "^3.9.0",
+    "@backstage/types": "^1.2.2",
+    "fast-check": "^4.9.0"
   },
   "files": [
     "dist"
