@@ -1,0 +1,114 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148707216
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148724922
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788149329567
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing fix)": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148707530
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788149338866
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788149462942
+      }
+    ],
+    "3.1 Implement the fix": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148707927
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788149468729
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151418060
+      }
+    ],
+    "3.2 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148708308
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151424638
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151477535
+      }
+    ],
+    "3.3 Verify preservation tests still pass": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148708680
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151483329
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151527554
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788148709090
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151533675
+      },
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151788689
+      }
+    ],
+    "3. Fix for free-text environment parameter (constrain to enum)": [
+      {
+        "executionId": "8792be5b-1737-4620-9468-dd7f08155e56",
+        "chatSessionId": "sess_88e58448-1942-42ab-9599-aa252d6a7ae6",
+        "timestamp": 1788151527926
+      }
+    ]
+  }
+}

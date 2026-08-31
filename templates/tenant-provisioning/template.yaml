@@ -37,8 +37,12 @@ spec:
           description: >-
             Deployment environment for this tenant configuration. Used as the
             subfolder name and written to the environment Terragrunt input.
-            Must be 1-12 characters of lowercase letters, digits, and hyphens.
-          pattern: '^[a-z0-9-]{1,12}$'
+            Must be one of dev, test, uat, prod.
+          enum:
+            - dev
+            - test
+            - uat
+            - prod
           default: dev
         dynamodb:
           title: Enable DynamoDB
