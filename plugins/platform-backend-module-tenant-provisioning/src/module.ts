@@ -7,7 +7,7 @@ import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-no
 import { createTenantProvisionAction } from './actions/tenantProvision';
 
 export const platformModuleTenantProvisioning = createBackendModule({
-  pluginId: 'platform',
+  pluginId: 'scaffolder',
   moduleId: 'tenant-provisioning',
   register(reg) {
     reg.registerInit({
