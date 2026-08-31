@@ -8,11 +8,13 @@
  * for any input where `isBugCondition(X)` does NOT hold, the fixed template
  * must behave the same as the original template. In particular:
  *   - the four valid environment values `{dev, test, uat, prod}` remain accepted,
- *   - the `environment` field keeps `default: dev`,
- *   - the other parameters (`tenantName`, `dynamodb`, `ecr`) validate/collect
- *     unchanged, and
- *   - the `debug:log` step and `output.text` block still echo the selected
- *     `environment` (and the other inputs) unchanged.
+ *   - the `environment` field keeps `default: dev`, and
+ *   - the `tenantName` parameter validates/collects unchanged.
+ *
+ * The template's `dynamodb`/`ecr` boolean parameters and `debug:log` step were
+ * later superseded by the `components` array parameter and the real
+ * `tenant:provision` action (see the `tenant-provision-action` spec), so this
+ * suite no longer asserts on them.
  *
  * Following observation-first methodology, these tests capture behavior observed
  * on the UNFIXED schema. They are EXPECTED TO PASS on the current (unfixed) code
@@ -183,52 +185,6 @@ describe('tenant-provisioning template: preservation (baseline behavior to keep)
       }),
       { numRuns: 300 },
     );
-  });
-
-  // Requirement 3.3: dynamodb and ecr are boolean flags defaulting to false and
-  // must be collected/validated unchanged.
-  it('preserves dynamodb and ecr as boolean flags defaulting to false (Req 3.3)', () => {
-    for (const name of ['dynamodb', 'ecr']) {
-      const raw = rawProperty(template, name);
-      expect(raw.type).toBe('boolean');
-      expect(raw.default).toBe(false);
-
-      const validate = ajv.compile(extractPropertySchema(template, name));
-      fc.assert(
-        fc.property(fc.boolean(), value => {
-          // Any boolean is accepted; non-booleans are rejected.
-          expect(validate(value)).toBe(true);
-        }),
-        { numRuns: 50 },
-      );
-      expect(validate('true')).toBe(false);
-      expect(validate(1)).toBe(false);
-    }
-  });
-
-  // Requirement 3.4: the debug:log step and output.text block still reference
-  // and echo ${{ parameters.environment }} (and the other inputs) unchanged.
-  it('preserves the debug:log step and output echoing the collected inputs (Req 3.4)', () => {
-    const steps = template?.spec?.steps;
-    expect(Array.isArray(steps)).toBe(true);
-
-    const logStep = steps.find((s: any) => s.action === 'debug:log');
-    expect(logStep).toBeDefined();
-    const message: string = logStep.input.message;
-    expect(message).toContain('${{ parameters.environment }}');
-    expect(message).toContain('${{ parameters.tenantName }}');
-    expect(message).toContain('${{ parameters.dynamodb }}');
-    expect(message).toContain('${{ parameters.ecr }}');
-
-    const outputText = template?.spec?.output?.text;
-    expect(Array.isArray(outputText)).toBe(true);
-    const content: string = outputText
-      .map((entry: any) => entry.content)
-      .join('\n');
-    expect(content).toContain('${{ parameters.environment }}');
-    expect(content).toContain('${{ parameters.tenantName }}');
-    expect(content).toContain('${{ parameters.dynamodb }}');
-    expect(content).toContain('${{ parameters.ecr }}');
   });
 
   // Preservation cross-check: for a sample of non-bug-condition environment

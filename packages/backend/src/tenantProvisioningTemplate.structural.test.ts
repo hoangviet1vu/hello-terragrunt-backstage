@@ -134,9 +134,9 @@ describe('tenant-provisioning template: structural / schema validation', () => {
   describe('environment parameter (Req 3.1, 3.2, 3.4, 3.9)', () => {
     const environment = properties.environment ?? {};
 
-    it('is a required string with the committed 1-12 [a-z0-9-] pattern', () => {
+    it('is a required string constrained to the dev/test/uat/prod enum', () => {
       expect(environment.type).toBe('string');
-      expect(environment.pattern).toBe('^[a-z0-9-]{1,12}$');
+      expect(environment.enum).toEqual(['dev', 'test', 'uat', 'prod']);
       expect(requiredList).toContain('environment');
     });
 
@@ -147,34 +147,6 @@ describe('tenant-provisioning template: structural / schema validation', () => {
     it('has a non-empty title and description', () => {
       expect(isNonEmptyString(environment.title)).toBe(true);
       expect(isNonEmptyString(environment.description)).toBe(true);
-    });
-  });
-
-  describe('dynamodb parameter (Req 4.1, 4.3, 4.5)', () => {
-    const dynamodb = properties.dynamodb ?? {};
-
-    it('is a boolean that defaults to false', () => {
-      expect(dynamodb.type).toBe('boolean');
-      expect(dynamodb.default).toBe(false);
-    });
-
-    it('has a non-empty title and description', () => {
-      expect(isNonEmptyString(dynamodb.title)).toBe(true);
-      expect(isNonEmptyString(dynamodb.description)).toBe(true);
-    });
-  });
-
-  describe('ecr parameter (Req 4.2, 4.4, 4.5)', () => {
-    const ecr = properties.ecr ?? {};
-
-    it('is a boolean that defaults to false', () => {
-      expect(ecr.type).toBe('boolean');
-      expect(ecr.default).toBe(false);
-    });
-
-    it('has a non-empty title and description', () => {
-      expect(isNonEmptyString(ecr.title)).toBe(true);
-      expect(isNonEmptyString(ecr.description)).toBe(true);
     });
   });
 });
