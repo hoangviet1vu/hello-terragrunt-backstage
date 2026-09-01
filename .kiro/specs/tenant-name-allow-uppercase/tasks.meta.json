@@ -1,0 +1,148 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186594322
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186611490
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186983891
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing fix)": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186594769
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186990991
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187450551
+      }
+    ],
+    "3.1 Broaden the backend pattern and human-readable strings in `tenantProvision.ts`": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186595197
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187465941
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187613393
+      }
+    ],
+    "3.2 Broaden the frontend pattern and helper text in `template.yaml`": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186595609
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187624461
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187726024
+      }
+    ],
+    "3.3 Update the related property tests to encode the new contract": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186596029
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187733599
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187862557
+      }
+    ],
+    "3.4 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186596338
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187874090
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187960999
+      }
+    ],
+    "3.5 Verify preservation tests still pass": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186596707
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788187968389
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788188057544
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788186597128
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788188067355
+      },
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788188595441
+      }
+    ],
+    "3. Fix for tenant name rejecting uppercase letters": [
+      {
+        "executionId": "4d130ca3-55bd-4f31-aca6-0ec7d9e203a9",
+        "chatSessionId": "sess_01c5d9f8-c59a-46ef-b09a-a378d1dc0a0e",
+        "timestamp": 1788188058049
+      }
+    ]
+  }
+}

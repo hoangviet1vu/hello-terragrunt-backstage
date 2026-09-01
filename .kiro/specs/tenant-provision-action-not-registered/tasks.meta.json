@@ -1,0 +1,114 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test (pluginId association regression test)": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163197294
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163217710
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163634259
+      }
+    ],
+    "2. Verify preservation tests pass on UNFIXED code (baseline)": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163197634
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163641510
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163846807
+      }
+    ],
+    "3.1 Correct the module pluginId": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163197964
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163853661
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163899346
+      }
+    ],
+    "3.2 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163198406
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163904915
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163970800
+      }
+    ],
+    "3.3 Verify preservation tests still pass": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163198751
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163977622
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788164041684
+      }
+    ],
+    "4. Checkpoint - Verification (no terragrunt/terraform/AWS/network)": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788163199111
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788164049069
+      },
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788164375789
+      }
+    ],
+    "3. Fix the pluginId mismatch so tenant:provision reaches the scaffolder registry": [
+      {
+        "executionId": "09568fe8-e598-47c6-a74e-db28e56dbc22",
+        "chatSessionId": "sess_26845fdf-3035-4b45-b7c4-28f57f1c0b25",
+        "timestamp": 1788164042045
+      }
+    ]
+  }
+}

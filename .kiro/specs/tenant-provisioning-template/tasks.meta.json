@@ -1,0 +1,188 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Author `templates/tenant-provisioning/template.yaml` with entity metadata and spec scaffolding": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746449
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904757310
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904822605
+      }
+    ],
+    "1.2 Define the `spec.parameters` form (tenantName, environment, dynamodb, ecr)": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746505
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904829468
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904891228
+      }
+    ],
+    "1.3 Add the runnable `show-inputs` step and `output.text` block": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746546
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904896078
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904952246
+      }
+    ],
+    "2.1 Add the `catalog.locations` entry in `app-config.yaml`": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746635
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904957697
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905005388
+      }
+    ],
+    "3. Checkpoint - template entity authored and registered": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746666
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905585912
+      }
+    ],
+    "4.1 Add a test that loads, parses, and schema-validates the template": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746697
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905467929
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905573715
+      }
+    ],
+    "5.1 Write property test for the tenantName parameter schema": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746732
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905017940
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905466762
+      }
+    ],
+    "5.2 Write property test for the environment parameter schema": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746758
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905468920
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905574616
+      }
+    ],
+    "6. Verify the entity and tests via yarn": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746800
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905591055
+      },
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905746657
+      }
+    ],
+    "7. (Optional) Manual/e2e check of the template in the scaffolder UI": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904746847
+      }
+    ],
+    "1. Create the tenant-provisioning Template catalog entity": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787904952314
+      }
+    ],
+    "2. Register the template location for local dev": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905005421
+      }
+    ],
+    "4. Add structural / schema validation tests for the template entity": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905573747
+      }
+    ],
+    "5. Add property-based tests over the parameter JSON Schemas": [
+      {
+        "executionId": "8e2a818d-4f74-4113-887d-4e2e702f4498",
+        "chatSessionId": "sess_1242e131-2e1b-436e-a767-925aa32dd306",
+        "timestamp": 1787905574645
+      }
+    ]
+  }
+}

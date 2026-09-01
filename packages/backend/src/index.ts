@@ -73,4 +73,5 @@ backend.add(import('@backstage/plugin-signals-backend'));
 // mcp actions plugin
 backend.add(import('@backstage/plugin-mcp-actions-backend'));
 
+backend.add(import('@internal/backstage-plugin-platform-backend-module-tenant-provisioning'));
 backend.start();
